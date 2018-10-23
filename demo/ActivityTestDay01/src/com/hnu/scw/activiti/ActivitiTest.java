@@ -1,23 +1,17 @@
-package per.san.act;
+package com.hnu.scw.activiti;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;
-import org.activiti.engine.history.HistoricProcessInstance;
-import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.junit.Test;
 
-import java.util.Date;
 import java.util.List;
 
 /**
- * description: 用于进行演示Activiti的首例程序，即描述如何在代码中实现学生进行请假申请，班主任审核，教务处审核
- *
- * @author shencai.huang@hand-china.com
- * @date 10/22/2018 17:03
- * lastUpdateBy: shencai.huang@hand-china.com
- * lastUpdateDate: 10/22/2018
- */
+ * @author scw
+ * @create 2018-01-15 11:04
+ * @desc 用于进行演示Activiti的首例程序，即描述如何在代码中实现学生进行请假申请，班主任审核，教务处审核
+ **/
 public class ActivitiTest {
 
     /**
@@ -51,7 +45,7 @@ public class ActivitiTest {
     public void testStartProcessInstance(){
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         processEngine.getRuntimeService()
-                .startProcessInstanceById("shenqing:2:12504");  //这个是查看数据库中act_re_procdef表
+                .startProcessInstanceById("shenqing:1:4");  //这个是查看数据库中act_re_procdef表
     }
     /**
      * 完成请假申请
@@ -60,7 +54,7 @@ public class ActivitiTest {
     public void testQingjia(){
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         processEngine.getTaskService()
-                .complete("17504"); //查看act_ru_task表
+                .complete("104"); //查看act_ru_task表
     }
 
     /**
@@ -86,7 +80,7 @@ public class ActivitiTest {
     public void testFinishTask_manager(){
         ProcessEngine engine = ProcessEngines.getDefaultProcessEngine();
         engine.getTaskService()
-                .complete("5002"); //查看act_ru_task数据表
+                .complete("202"); //查看act_ru_task数据表
     }
 
     /**
@@ -96,32 +90,6 @@ public class ActivitiTest {
     public void testFinishTask_Boss(){
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         processEngine.getTaskService()
-                .complete("7502");  //查看act_ru_task数据表
-    }
-
-    @Test
-    public void testHistory(){
-        ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
-//        Task task = processEngine.getTaskService()
-//                .createTaskQuery()
-//                .taskId("15004")
-//                .singleResult();
-//        ProcessInstance processInstance = processEngine.getRuntimeService()
-//                .createProcessInstanceQuery()
-//                .processInstanceId(task.getProcessInstanceId())
-//                .singleResult();
-        List<HistoricProcessInstance> historicProcessInstanceList = processEngine.getHistoryService()
-                .createHistoricProcessInstanceQuery()
-                .startedAfter(new Date())
-                .startedBefore(new Date())
-                .list();
-        System.out.println(historicProcessInstanceList);
-    }
-
-    @Test
-    public void testGuaqi(){
-        ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
-//        processEngine.getRepositoryService().suspendProcessDefinitionById("shenqing:2:12504",true,null);
-        processEngine.getRepositoryService().activateProcessDefinitionById("shenqing:2:12504",true,null);
+                .complete("302");  //查看act_ru_task数据表
     }
 }
