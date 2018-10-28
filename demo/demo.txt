@@ -4,9 +4,9 @@
 
 	<bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
 		<property name="jdbcDriver" value="com.mysql.jdbc.Driver"></property>
-		<property name="jdbcUrl" value="jdbc:mysql://111.231.74.237:3306/activiti_demo?useUnicode=true&amp;characterEncoding=utf8"></property>
-		<property name="jdbcUsername" value="root"></property>
-		<property name="jdbcPassword" value="root"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://rm-uf6ceu5c4lr88z6vdvo.mysql.rds.aliyuncs.com:3306/workflow_service?useUnicode=true&amp;characterEncoding=utf8"></property>
+		<property name="jdbcUsername" value="hitom"></property>
+		<property name="jdbcPassword" value="Hitom123"></property>
 		<!--
 			创建表的策略
 		 -->
